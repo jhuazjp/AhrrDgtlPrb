@@ -43,7 +43,7 @@ Screenshots y videos: .../automation/test-results
 
 ### Modo headless
 - Cambiar configuracion headless .../automation/playwright.config.ts
-- Para ejecutar en modo visible: ´$env:HEADLESS=' "false" npm test
+- Para ejecutar en modo visible: $env:HEADLESS="false" npm test
 - Para volver a headless: $env:HEADLESS="true" npm test
 
 
