@@ -121,7 +121,7 @@ Actualmente el backend funciona con datos en memoria para facilitar las pruebas.
 
 **Ejecucion de los desarrollo**
 - Backend: **npm run dev** para ejecutar el backend 
-- Frontend: **ng -serve -0** para ejecutar el frontend 
+- Frontend: **ng -serve -o** para ejecutar el frontend 
 - Automatizacion **npm test** para ejecutar test 
 
 **Reportes**
