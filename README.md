@@ -4,8 +4,8 @@ Proyecto tecnico para el rol de QA Automation. Incluye frontend en Angular, back
 
 **Estructura**
 - .../frontend Aplicacion web (Angular)
-- .../backend/` API mock (Express)
-- .../automation/` Suite de pruebas (Playwright)
+- .../backend/ API mock (Express)
+- .../automation/ Suite de pruebas (Playwright)
 
 **Requisitos**
 - Node.js 18+
