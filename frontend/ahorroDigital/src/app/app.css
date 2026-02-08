@@ -1,0 +1,96 @@
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px clamp(20px, 4vw, 48px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #0e1b1f;
+  background: linear-gradient(135deg, #f3b74f, #f07b3f);
+  box-shadow: 0 12px 24px rgba(240, 123, 63, 0.25);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-text strong {
+  font-size: 1.05rem;
+}
+
+.brand-text span {
+  font-size: 0.85rem;
+  color: #56636a;
+}
+
+.app-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.app-nav a {
+  text-decoration: none;
+  color: #0e1b1f;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.app-nav a:hover {
+  border-color: rgba(14, 27, 31, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.app-nav a.active {
+  background: #0e1b1f;
+  color: #fff7e6;
+}
+
+.app-main {
+  padding: 0 clamp(20px, 4vw, 48px) 48px;
+}
+
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px clamp(20px, 4vw, 48px) 28px;
+  font-size: 0.85rem;
+  color: #56636a;
+}
+
+@media (max-width: 720px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .app-footer {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

@@ -1,0 +1,138 @@
+<section class="sim-layout">
+  <div class="card sim-card">
+    <div class="sim-header">
+      <h1>Simulador de ahorro</h1>
+      <p>Configura monto, tasa y plazo para estimar tu rentabilidad.</p>
+    </div>
+
+    <form id="sim-form" data-testid="sim-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="field">
+          <label for="product">Producto</label>
+          <select id="product" name="product" data-testid="sim-product" formControlName="product">
+            <option value="CDT">CDT</option>
+            <option value="AHORRO">Cuenta de ahorro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="amount">Monto (COP)</label>
+          <input
+            id="amount"
+            type="number"
+            min="100000"
+            max="500000000"
+            step="1000"
+            name="amount"
+            data-testid="sim-amount"
+            formControlName="amount"
+            placeholder="1000000"
+          />
+          <small class="hint">Min 100.000 - Max 500.000.000</small>
+          <div class="field-error" *ngIf="form.get('amount')?.touched && form.get('amount')?.invalid">
+            Monto fuera de rango.
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="rate">Tasa anual (%)</label>
+          <input
+            id="rate"
+            type="number"
+            min="0"
+            max="100"
+            step="0.01"
+            name="rate"
+            data-testid="sim-rate"
+            formControlName="rate"
+            placeholder="12.5"
+          />
+          <small class="hint">0 - 100 con dos decimales</small>
+          <div class="field-error" *ngIf="form.get('rate')?.touched && form.get('rate')?.invalid">
+            Tasa invalida.
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="termMonths">Plazo (meses)</label>
+          <input
+            id="termMonths"
+            type="number"
+            min="1"
+            max="360"
+            step="1"
+            name="termMonths"
+            data-testid="sim-term"
+            formControlName="termMonths"
+            placeholder="12"
+          />
+          <small class="hint">Numero entero de meses</small>
+          <div class="field-error" *ngIf="form.get('termMonths')?.touched && form.get('termMonths')?.invalid">
+            Plazo invalido.
+          </div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button
+          id="sim-submit"
+          data-testid="sim-submit"
+          class="primary"
+          type="submit"
+          [disabled]="form.invalid || isLoading"
+        >
+          {{ isLoading ? 'Calculando...' : 'Simular' }}
+        </button>
+        <button id="sim-reset" data-testid="sim-reset" class="ghost" type="button" (click)="reset()">Reiniciar</button>
+      </div>
+
+      <div id="sim-error" data-testid="sim-error" class="alert" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+
+  <div id="sim-results" data-testid="sim-results" class="card result-card" *ngIf="result">
+    <div class="result-header">
+      <div>
+        <h2>Resultados</h2>
+        <p>Producto: {{ result.product }}</p>
+      </div>
+      <button id="sim-download" data-testid="sim-download" class="ghost" type="button" (click)="downloadCsv()">Descargar CSV</button>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <span>Monto inicial</span>
+        <strong>{{ formatCOP(result.amount) }}</strong>
+      </div>
+      <div class="summary-item">
+        <span>Ganancia estimada</span>
+        <strong>{{ formatCOP(result.gain) }}</strong>
+      </div>
+      <div class="summary-item">
+        <span>Monto final</span>
+        <strong>{{ formatCOP(result.finalAmount) }}</strong>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th>Interes</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of result.schedule" data-testid="sim-row">
+            <td>{{ row.month }}</td>
+            <td>{{ formatCOP(row.interest) }}</td>
+            <td>{{ formatCOP(row.balance) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

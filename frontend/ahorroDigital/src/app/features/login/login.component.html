@@ -1,0 +1,91 @@
+<section class="auth-layout">
+  <div class="card auth-card">
+    <div class="auth-header">
+      <h1>Iniciar sesion</h1>
+      <p>Accede para simular tus ahorros en minutos.</p>
+    </div>
+
+    <form id="login-form" data-testid="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label for="document">Documento</label>
+        <input
+          id="document"
+          type="text"
+          inputmode="numeric"
+          autocomplete="username"
+          name="document"
+          data-testid="login-document"
+          formControlName="document"
+          placeholder="Ej: 12345678"
+        />
+        <div class="field-error" *ngIf="form.get('document')?.touched && form.get('document')?.invalid">
+          <span *ngIf="form.get('document')?.errors?.['required']">Documento requerido.</span>
+          <span *ngIf="form.get('document')?.errors?.['pattern']">Solo numeros.</span>
+          <span *ngIf="form.get('document')?.errors?.['minlength'] || form.get('document')?.errors?.['maxlength']">
+            Longitud entre 5 y 12 digitos.
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          name="password"
+          data-testid="login-password"
+          formControlName="password"
+          placeholder="Tu clave segura"
+        />
+        <div class="field-error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+          <span *ngIf="form.get('password')?.errors?.['required']">Contraseña requerida.</span>
+          <span *ngIf="form.get('password')?.errors?.['minlength']">Minimo 6 caracteres.</span>
+        </div>
+
+        <div class="strength" *ngIf="strength.level">
+          <div class="bars">
+            <span [class.active]="strength.level >= 1"></span>
+            <span [class.active]="strength.level >= 2"></span>
+            <span [class.active]="strength.level >= 3"></span>
+          </div>
+          <small>Seguridad: {{ strength.label }}</small>
+        </div>
+      </div>
+
+      <div id="login-error" data-testid="login-error" class="alert" *ngIf="errorMessage">
+        <strong>{{ errorMessage }}</strong>
+      </div>
+
+      <button
+        id="login-submit"
+        data-testid="login-submit"
+        class="primary"
+        type="submit"
+        [disabled]="form.invalid || isLoading"
+      >
+        {{ isLoading ? 'Validando...' : 'Ingresar' }}
+      </button>
+
+      <div class="helpers">
+        <a href="#">Olvide mi contraseña</a>
+        <a href="#">Registrate</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="auth-panel">
+    <div class="panel-content">
+      <h2>Controla tu ahorro</h2>
+      <p>
+        Simula CDT y cuentas de ahorro con tasas realistas, compara escenarios y
+        descarga tus proyecciones.
+      </p>
+      <ul class="panel-list">
+        <li>Calculos transparentes y trazables.</li>
+        <li>Validaciones alineadas a tu plan de pruebas.</li>
+        <li>Experiencia responsive y lista para QA.</li>
+      </ul>
+    </div>
+  </div>
+</section>
