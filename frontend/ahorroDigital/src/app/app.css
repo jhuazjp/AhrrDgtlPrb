@@ -26,7 +26,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #0e1b1f;
-  background: linear-gradient(135deg, #f3b74f, #f07b3f);
+  background: linear-gradient(135deg, #aed7f3, #98b4dd);
   box-shadow: 0 12px 24px rgba(240, 123, 63, 0.25);
 }
 
@@ -42,7 +42,7 @@
 
 .brand-text span {
   font-size: 0.85rem;
-  color: #56636a;
+  color: #6ba2c0;
 }
 
 .app-nav {
@@ -67,7 +67,7 @@
 
 .app-nav a.active {
   background: #0e1b1f;
-  color: #fff7e6;
+  color: #afd5f5;
 }
 
 .app-main {

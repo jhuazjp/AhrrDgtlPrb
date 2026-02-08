@@ -8,7 +8,7 @@
   --ink: #0e1b1f;
   --muted: #56636a;
   --accent: #f07b3f;
-  --accent-strong: #d95b2b;
+  --accent-strong: #2ba8d9;
   --outline: rgba(14, 27, 31, 0.12);
   --shadow: 0 24px 50px rgba(14, 27, 31, 0.1);
 }
@@ -21,7 +21,7 @@
 
 body {
   font-family: 'Manrope', system-ui, sans-serif;
-  background: radial-gradient(circle at top left, #fff7e6 0%, var(--bg-base) 40%, #e8f4f2 100%);
+  background: radial-gradient(circle at top left, #e6efff 0%, var(--bg-base) 40%, #e8f4f2 100%);
   color: var(--ink);
   min-height: 100vh;
 }
@@ -52,6 +52,6 @@ input, select, textarea {
 
 @media (max-width: 720px) {
   body {
-    background: radial-gradient(circle at top left, #fff4dc 0%, #f4efe4 60%, #e6f1ef 100%);
+    background: radial-gradient(circle at top left, #c2e3f7 0%, #bfe1f1 60%, #e6f1ef 100%);
   }
 }
